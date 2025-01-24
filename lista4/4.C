@@ -10,7 +10,7 @@ int count_movies(const char* filepath) {
     if (!file) {
         printf("Erro ao abrir o arquivo '%s'.\n", filepath);
         return -1;
-    }
+    ]
 
     int count = 0;
     Movie movie;
