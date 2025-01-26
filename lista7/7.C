@@ -19,39 +19,39 @@ return result;
 }
 
 float calc_posfix(const string& expression) {
-    stack<float>operators;
+    stack<float>operands;
     vector<string> tokens = vectorize_expression(expression);
 
     for (const string& token : tokens){
         if(isdigit(token[0])){
-            operators.push(stof(token));
+            operands.push(stof(token));
         } else {
-            if(operators.size() < 2){
+            if(operands.size() < 2){
                 throw invalid_argument("Expressão inválida: operandos insuficientes.");
         }
-            float b = operators.top(); operators.pop(); 
-            float a = operators.top(); operators.pop(); 
+            float b = operands.top(); operands.pop(); 
+            float a = operands.top(); operands.pop(); 
 
             if (token == "+") {
-                operators.push(a + b);
+                operands.push(a + b);
             } else if (token == "-") {
-                operators.push(a - b);
+                operands.push(a - b);
             } else if (token == "*") {
-                operators.push(a * b);
+                operands.push(a * b);
             } else if (token == "/") {
                 if (b == 0) { 
                     throw invalid_argument("Erro: divisão por zero.");
                 }
-                operators.push(a / b);
+                operands.push(a / b);
             } else {
                 throw invalid_argument("Operador inválido: " + token);
             }
         }
 
     }
-     if (operators.size() != 1) {
+     if (operands.size() != 1) {
         throw invalid_argument("Expressão inválida.");
     }
 
-    return operators.top(); 
+    return operands.top(); 
 }
