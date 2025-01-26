@@ -46,18 +46,3 @@ string posfix_to_infix(string expression) {
 
     return operands.top();
 }
-
-int main() {
-    string expression;
-    cout << "Digite a expressão posfixa: ";
-    getline(cin, expression);
-
-    try {
-        string infix_expr = posfix_to_infix(expression);
-        cout << "Expressão infixa: " << infix_expr << endl;
-    } catch (const exception& e) {
-        cout << "Erro: " << e.what() << endl;
-    }
-
-    return 0;
-}
