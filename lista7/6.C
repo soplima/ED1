@@ -5,15 +5,12 @@ using namespace std;
 
 vector<string> vectorize_expression(const string &expression)
 {
-    vector<string> result;
-
-    stringstream ss(expression);
-
+    vector<string>result;
+    stringstream ss (expression);
     string token;
-    while (ss >> token)
-    {
+
+    while (ss >> token){
         result.push_back(token);
     }
-
     return result;
 }
