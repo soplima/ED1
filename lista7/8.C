@@ -8,36 +8,29 @@ using namespace std;
 
 vector<string> vectorize_expression(const string &expression)
 {
-    vector<string> result;
-    stringstream ss(expression);
+    vector<string>result;
+    stringstream ss (expression);
     string token;
 
-    while (ss >> token)
-    {
+    while(ss >> token){
         result.push_back(token);
     }
     return result;
 }
 
-bool check_posfix(string expression)
-{
-    stack<int> stack;
-    vector<string> tokens = vectorize_expression(expression);
+bool check_posfix(string expression){
+    stack<float>operands;
+    vector<string>tokens = vectorize_expression(expression);
 
-    for (const string &token : tokens)
-    {
-        if (isdigit(token[0]))
-        {
-            stack.push(1);
-        }
-        else
-        {
-            if (stack.size() < 2)
-            {
+    for (const string& token : tokens){
+        if(isdigit(token[0])){
+            operands.push(1);
+        } else{
+            if(operands.size() < 2){
                 return false;
             }
-            stack.pop();
         }
+        operands.pop();
     }
-    return stack.size() == 1;
+    return operands.size() == 1;
 }
