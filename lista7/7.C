@@ -14,12 +14,43 @@ vector<string> vectorize_expression(const string& expression) {
     while(ss >> token){
         result.push_back(token);
     }
-    return result;
 }
-
-float calc_posfix(const string& expression) {
+float calc_posfix(string expression){
     stack<float>operands;
-    vector<string> tokens = vectorize_expression(expression);
+    vector<string>tokens = vectorize_expression(expression);
 
-    
+    for (const string& token : tokens) {
+        if(isdigit(token[0])){
+            operands.push(stof(token));
+        }else{
+            if(operands.size() < 2){
+                return false;
+            }
+            float b = operands.top(); operands.pop();
+            float a = operands.top(); operands.pop();
+
+            if(token == "+"){
+                operands.push(a + b);
+            } 
+            else if (token == "-"){
+                operands.push(a - b);
+            }
+            else if (token == "*"){
+                operands.push(a * b);
+            }
+            else if (token == "/"){
+                if(b == 0){
+                    return false;
+                }
+                operands.push(a / b);
+            }
+            else{
+                throw invalid_argument("Operador inválido: " + token);
+            }
+        }
+    }
+    if (operands.size() != 1){
+        throw invalid_argument("Expressão inválida.");
+    }
+    return operands.top();
 }
