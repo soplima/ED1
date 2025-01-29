@@ -28,6 +28,9 @@ string posfix_to_infix(string expression)
             operand.push(num);
         }
         else if(token == '+' || token == '-' || token == '*' || token == '/'){
+            if (operand.size() < 2) {
+                throw invalid_argument("Expressão posfixa inválida.");
+            }
             string operand2 = operand.top(); operand.pop();
             string operand1 = operand.top(); operand.pop();
             string infix_exp = "(" + operand1 + " " + token + " " + operand2 + ")";
