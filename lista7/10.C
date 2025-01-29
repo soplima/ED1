@@ -5,44 +5,38 @@
 #include <stdexcept>
 using namespace std;
 
-string posfix_to_infix(string expression) {
-    stack<string> operands; 
+string posfix_to_infix(string expression)
+{
+    stack<string> operand;
     int i = 0;
-
-    while (i < expression.length()) {
+    while (i < expression.length())
+    {
         char token = expression[i];
-
-        if (token == ' ') {
+        if (token == ' ')
+        {
             i++;
             continue;
         }
-
-        if (isdigit(token)) {
+        if (isdigit(token))
+        {
             string num = "";
-            while (i < expression.length() && isdigit(expression[i])) {
+            while (i < expression.length() && isdigit(expression[i]))
+            {
                 num += expression[i];
                 i++;
             }
-            operands.push(num);
+            operand.push(num);
         }
-        else if (token == '+' || token == '-' || token == '*' || token == '/') {
-            if (operands.size() < 2) {
-                throw invalid_argument("Expressão posfixa inválida.");
-            }
-            string operand2 = operands.top(); operands.pop();
-            string operand1 = operands.top(); operands.pop();
-            string infix_expr = "( " + operand1 + " " + token + " " + operand2 + " )";
-            operands.push(infix_expr);
+        else if(token == '+' || token == '-' || token == '*' || token == '/'){
+            string operand2 = operand.top(); operand.pop();
+            string operand1 = operand.top(); operand.pop();
+            string infix_exp = "(" + operand1 + " " + token + " " + operand2 + ")";
+            operand.push(infix_exp);
             i++;
         }
-        else {
-            throw invalid_argument("Caractere inválido na expressão.");
+        if (operand.size() != 1) {
+        throw invalid_argument("Expressão posfixa inválida.");
         }
     }
-
-    if (operands.size() != 1) {
-        throw invalid_argument("Expressão posfixa inválida.");
-    }
-
-    return operands.top();
+    return operand.top();
 }
