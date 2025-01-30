@@ -8,7 +8,6 @@ std::forward_list<int> vet_to_flist(int *v, int n)
         return flist;
     }
     auto it = flist.before_begin();
-
     for (int i = 0; i < n; i ++){
         it = flist.insert_after(it, v[i]);
     }
