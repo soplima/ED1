@@ -17,20 +17,20 @@ vector<string> vectorize_expression(const string &expression)
     }
     return result;
 }
-
 bool check_posfix(string expression){
-    stack<float>operands;
+    stack<float>operand;
     vector<string>tokens = vectorize_expression(expression);
 
-    for (const string& token : tokens){
+    for (const string& token: tokens){
         if(isdigit(token[0])){
-            operands.push(1);
-        } else{
-            if(operands.size() < 2){
+            operand.push(1);
+        }
+        else {
+            if(operand.size() < 2){
                 return false;
             }
         }
-        operands.pop();
+        operand.pop();
     }
-    return operands.size() == 1;
+    return operand.size() == 1;
 }
