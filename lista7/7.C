@@ -14,43 +14,42 @@ vector<string> vectorize_expression(const string& expression) {
     while(ss >> token){
         result.push_back(token);
     }
+    return result;
 }
 float calc_posfix(string expression){
-    stack<float>operands;
+    stack<float>operand;
     vector<string>tokens = vectorize_expression(expression);
 
-    for (const string& token : tokens) {
+    for (const string& token: tokens){
         if(isdigit(token[0])){
-            operands.push(stof(token));
-        }else{
-            if(operands.size() < 2){
-                return false;
-            }
-            float b = operands.top(); operands.pop();
-            float a = operands.top(); operands.pop();
-
+            operand.push(stof(token));
+        }
+        else {
+            if(operand.size() < 2){
+            return false;
+        }
+            float b = operand.top(); operand.pop();
+            float a = operand.top(); operand.pop();
+            
             if(token == "+"){
-                operands.push(a + b);
-            } 
-            else if (token == "-"){
-                operands.push(a - b);
+                operand.push(a + b);
             }
-            else if (token == "*"){
-                operands.push(a * b);
+            if(token == "-"){
+                operand.push(a - b);
             }
-            else if (token == "/"){
+            if(token == "*"){
+                operand.push(a * b);
+            }
+            if(token == "/"){
                 if(b == 0){
                     return false;
                 }
-                operands.push(a / b);
-            }
-            else{
-                throw invalid_argument("Operador inválido: " + token);
+                operand.push(a / b);
             }
         }
+        if(operand.size() != 1){
+            return false;
+        }
     }
-    if (operands.size() != 1){
-        throw invalid_argument("Expressão inválida.");
-    }
-    return operands.top();
+    return operand.top();
 }
