@@ -29,8 +29,8 @@ bool check_posfix(string expression){
             if(operand.size() < 2){
                 return false;
             }
+            operand.pop();
         }
-        operand.pop();
     }
     return operand.size() == 1;
 }
