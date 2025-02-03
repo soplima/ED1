@@ -29,7 +29,7 @@ using namespace std;
 
 vector<string> vectorize_expression(const string& expression) {
     vector<string>result;
-    stringstream ss;
+    stringstream ss (expression);
     string token;
 
     while(ss >> token){
@@ -41,18 +41,15 @@ float calc_posfix(string expression){
     stack<float>operand;
     vector<string>tokens = vectorize_expression(expression);
 
-    for (const string token: tokens){
+    for(const string token: tokens){
         if(isdigit(token[0])){
             operand.push(stoi(token));
         }
-
-        else if (operand.size() < 2){
+        else if(operand.size() < 2){
             return false;
         }
-
         float b = operand.top(); operand.pop();
         float a = operand.top(); operand.pop();
-
         if(token == "+"){
             return a + b;
         }
@@ -68,7 +65,7 @@ float calc_posfix(string expression){
             }
             return a / b;
         }
-        if (operand.size() != 1){
+        if(operand.size() != 1){
             return false;
         }
     }
