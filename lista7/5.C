@@ -23,15 +23,18 @@ bool check_brackets(const string &expression)
             operators.push(ch);
         }
         else if (ch == ')' || ch == ']' || ch == '}'){
-            if(operators.empty());
+        if(operators.empty())
             return false;
+        
         }
         char top = operators.top();
         operators.pop();
+        
         if((ch == ')' && top != '(') ||
            (ch == ']' && top != '[') ||
-           (ch == '}' && top != '{'))
-           return false;
+           (ch == '}' && top != '{')){
+            return false;
+           }
     }
     return operators.empty();
 }
