@@ -6,9 +6,9 @@ using namespace std;
 
 stack<int> vet_to_stack(int *v, int n)
 {
-  stack<int>stack;
-  for (int i = 0; i < n; i ++){
-    stack.push(v[i]);
+  stack<int>s;
+  for (int i = 0; i< n; i++){
+    s.push(v[i]);
   }
-  return stack;
+  return s;
 }
