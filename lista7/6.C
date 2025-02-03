@@ -12,12 +12,12 @@ using namespace std;
 
 vector<string> vectorize_expression(const string &expression)
 {
-    vector<string>s;
+    vector<string>result;
     stringstream ss (expression);
     string token;
 
     while(ss >> token){
-        s.push_back(token);
+        result.push_back(token);
     }
-    return s;
+    return result;
 }
