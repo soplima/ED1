@@ -16,7 +16,7 @@ using namespace std;
 vector<string> vectorize_expression(const string &expression)
 {
     vector<string>result;
-    stringstream ss;
+    stringstream ss (expression);
     string token;
 
     while(ss >> token){
@@ -24,19 +24,19 @@ vector<string> vectorize_expression(const string &expression)
     }
     return result;
 }
-
 bool check_posfix(string expression){
-    stack<float>operand;
-    vector<string>tokens = vectorize_expression(expression);
+    stack<float>operands;
+    vector<string>tokens = vectorize_expression (expression);
 
     for(const string token: tokens){
         if(isdigit(token[0])){
-            operand.push(1);
+            operands.push(1);
         }
-        else if(operand.size() < 2){
-            return false;
-        }
-        operand.pop();
+        else
+            if(operands.size() < 2){
+                return false;
+            }
+            operands.pop();
     }
-    return operand.size() == 1;
+    return operands.size() == 1;
 }
