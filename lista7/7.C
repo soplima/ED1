@@ -17,8 +17,6 @@
 //execução da operação);
 //▪ Quando terminar de percorrer a expressão, o resultado estará no topo da pilha
 
-
-
 #include <string>
 #include <vector>
 #include <stack>
@@ -37,19 +35,22 @@ vector<string> vectorize_expression(const string& expression) {
     }
     return result;
 }
+
 float calc_posfix(string expression){
-    stack<float>operand;
-    vector<string>tokens = vectorize_expression(expression);
+    stack<float>operands;
+    vector<string>tokens = vectorize_expression (expression);
 
     for(const string token: tokens){
         if(isdigit(token[0])){
-            operand.push(stoi(token));
+            operands.push(stoi(token));
         }
-        else if(operand.size() < 2){
-            return false;
+        else 
+            if (operands.size() < 2){
+            return false; 
         }
-        float b = operand.top(); operand.pop();
-        float a = operand.top(); operand.pop();
+        float b = operands.top(); operands.pop();
+        float a = operands.top(); operands.pop();
+
         if(token == "+"){
             return a + b;
         }
@@ -60,14 +61,14 @@ float calc_posfix(string expression){
             return a * b;
         }
         if(token == "/"){
-            if(b == '0'){
+            if (b == 0){
                 return false;
             }
             return a / b;
         }
-        if(operand.size() != 1){
-            return false;
-        }
+
+    } if(operands.size() != 1){
+        return false;
     }
-    return operand.top();
+    return operands.top();
 }
