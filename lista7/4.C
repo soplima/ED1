@@ -1,6 +1,5 @@
-//Escreva uma função que recebe a referência de duas forward_list<int> e concatena seus conteúdos
-//em um vector<int>, a ser devolvido pelo função.
-
+//Escreva uma função que recebe a referência de duas forward_list<int> e 
+//concatena seus conteúdos em um vector<int>, a ser devolvido pelo função.
 
 #include <forward_list>
 #include <vector>
