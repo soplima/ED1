@@ -7,5 +7,5 @@ using namespace std;
 bool palindrome(string& str, int first, int last) {
     if(first >= last) return true;
     if(str[first] != str[last]) return false;
-    palindrome(str, first + 1, last - 1);
+    return palindrome(str, first + 1, last - 1);
 }
