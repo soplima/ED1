@@ -21,10 +21,9 @@ using namespace std;
 
 string posfix_to_infix(string expression)
 {
-    stack<string>operands;
-
+    stack<string>operand;
     int i = 0;
-    while (i < expression.length()){
+    while(i<expression.length()){
         char token = expression[i];
 
         if(token == ' '){
@@ -32,25 +31,28 @@ string posfix_to_infix(string expression)
             continue;
         }
         else if(isdigit(token)){
-           string num = "";
-           while(i < expression.length() && isdigit(expression[i])){
+            string num = "";
+            while(i<expression.length() && isdigit(expression[i])){
             num += expression[i];
             i++;
-           }
-           operands.push(num);
+            }
+            operand.push(num);
         }
-        else if (token == '+'|| token == '-'|| token == '*'|| token == '/'){
-            operands.size() < 2;
-            throw invalid_argument("Expressão posfixa inválida.");
+        else {
+            if(token == '+' || token == '-'|| token == '*'|| token == '/'){
+                if(operand.size()<2){
+                    throw runtime_error("Invalid expression");
+                }
+                string operand2 = operand.top(); operand.pop();
+                string operand1 = operand.top(); operand.pop();
+                string infix_exp = "(" + operand1 + " " + token + " " + operand2 + ")";
+                operand.push(infix_exp);
+                i++;
+            }
         }
-        string operands2 = operands.top(); operands.pop();
-        string operands1 = operands.top(); operands.pop();
-        string infix_exp = "(" + operands1 + " " + token + " " + operands2 + ")";
-        operands.push(infix_exp);
-        i++;
     }
-    if(operands.size() != 1){
-        throw invalid_argument("Expressão posfixa inválida.");
+    if(operand.size() != 1){
+        throw runtime_error("Invalid expression");
     }
-    return operands.top();
+    return operand.top();
 }
