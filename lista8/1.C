@@ -4,8 +4,8 @@
 using namespace std;
 
 void print_txt(char* text, int count = 10) {
-    if (count == 0) return;  
-    cout << text << endl;    
-    print_txt(text, count - 1);  
+    if(count == 0) return;
+    cout << text << " ";
+    print_txt(text, 10 - 1);
 }
 
