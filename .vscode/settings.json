@@ -47,6 +47,7 @@
         "streambuf": "c",
         "typeinfo": "c",
         "sstream": "c",
-        "list": "c"
+        "list": "c",
+        "stack": "c"
     }
 }

@@ -9,6 +9,6 @@ void print_stack(stack<int>& stk){
     if(stk.empty()) return;
     int top = stk.top();
     stk.pop();
-    cout << top << " ";
-    print_stack(stk); 
+    cout << top << endl;
+    print_stack(stk);
 }
