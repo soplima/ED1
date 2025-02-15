@@ -4,7 +4,7 @@
 using namespace std;
 
 void count(int num){
-    if (num > 50 ) return;
-    cout << num << " ";
-    count (num + 1);
+    if(num > 50) return;
+    cout << num << endl;
+    count(num + 1);
 }
