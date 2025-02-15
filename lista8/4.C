@@ -7,7 +7,7 @@ using namespace std;
 
 
 void print_vec(vector<int>& vec, int idx){
-    if (idx >= vec.size()) return;
-    cout << vec[idx] << " ";
-    print_vec(vec, idx + 1);
+    if(idx < 0) return;
+    cout << vec[idx] << endl;
+    print_vec(vec, idx -1 );
 }

@@ -6,9 +6,9 @@
 using namespace std;
 
 void print_even(vector<int>& vec, int idx){
-    if (idx < 0) return;
-    print_even(vec, idx - 1);
+    if(idx < 0)return;
     if(vec[idx] % 2 == 0){
-    cout << vec[idx] << " ";
+    cout<<vec[idx] << endl;
     }
+    print_even(vec, idx -1);
 }
