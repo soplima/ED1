@@ -5,6 +5,6 @@ using namespace std;
 
 void count_max(int num, int max){
     if(num > max) return;
-    cout << num << " ";
+    cout << num << endl;
     count_max(num + 1, max);
 }
