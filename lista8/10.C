@@ -6,7 +6,7 @@
 using namespace std;
 
 void push_to(stack<int>& stk1, stack<int>& stk2){
-    if(stk1.empty())return;
+    if(stk1.empty()) return;
     int top = stk1.top();
     stk1.pop();
     push_to(stk1, stk2);
