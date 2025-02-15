@@ -6,7 +6,7 @@
 using namespace std;
 
 bool find(vector<int>& vec, int n, int elem){
-    if(n == 0) false;
-    if(vec[n-1] == elem) return true;
-    return find(vec, n - 1, elem);
+    if(n < 0) return false;
+    if (vec[n] == elem) return true;
+    return find(vec, n -1, elem);
 }
