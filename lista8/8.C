@@ -7,7 +7,7 @@ using namespace std;
 
 void remove_all(vector<int>& vec){
     if(vec.size() == 0) return;
-    cout << vec.front() << " ";
+    cout << vec.front() << endl;
     vec.erase(vec.begin());
     remove_all(vec);
 }
