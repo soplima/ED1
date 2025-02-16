@@ -6,6 +6,6 @@
 using namespace std;
 
 int count(vector<int>& vec, int n, int elem){
-    if(n == 0) return 0;
-    return (vec[n - 1] == elem) + count(vec, n - 1, elem);
+    if(n < 0) return 0;
+    return (vec[n] == elem) + count(vec, n-1, elem);
 }
