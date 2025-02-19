@@ -8,5 +8,5 @@ using namespace std;
 int product(list<int>& lst, list<int>::iterator it)
 {
     if(it == lst.end())return 1;
-    return (*it) * product(lst, next(it));
+    return *it * product(lst, next(it));
 }
