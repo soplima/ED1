@@ -26,50 +26,48 @@
 using namespace std;
 
 vector<string> vectorize_expression(const string& expression) {
-    vector<string> result;
-    stringstream ss(expression);
+    vector<string>result;
+    stringstream ss (expression);
     string token;
-    
-    while (ss >> token) {
+
+    while(ss >> token){
         result.push_back(token);
     }
-    
-    return result;
 }
 
 float calc_posfix(string expression) {
-    stack<float> operand;
-    vector<string> tokens = vectorize_expression(expression);
+    stack<float>operand;
+    vector<string>tokens = vectorize_expression (expression);
 
-    for (const string& token : tokens) {
-        if (isdigit(token[0])) {  // If it's a number, push to stack
+    for(const string &token: tokens){
+        if(isdigit(token[0])){
             operand.push(stoi(token));
-        } else if (operand.size() < 2) {  // Ensure there are enough operands
-            throw runtime_error("Not enough operands in the stack");
-        } else {
+        }
+        else if(operand.size()<2){
+            throw runtime_error ("Nao ha numeros suficientes para realizar a operacao");
+            }
+        else {
             float b = operand.top(); operand.pop();
             float a = operand.top(); operand.pop();
 
-            if (token == "+") {
+            if(token == "+"){
                 operand.push(a + b);
-            } else if (token == "-") {
+            }
+            if(token == "-"){
                 operand.push(a - b);
-            } else if (token == "*") {
+            }
+            if(token == "*"){
                 operand.push(a * b);
-            } else if (token == "/") {
-                if (b == 0) {
-                    throw runtime_error("Division by zero");
+            }
+            if(token == "/"){
+                if(b == 0){
+                    throw runtime_error ("Divisao por zero");
                 }
                 operand.push(a / b);
-            } else {
-                throw runtime_error("Invalid operator: " + token);
             }
         }
+        if (operand.size() != 1) {  
+            throw runtime_error("Malformed expression");
     }
-
-    if (operand.size() != 1) {  
-        throw runtime_error("Malformed expression");
-    }
-
     return operand.top();
 }
