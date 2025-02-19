@@ -10,5 +10,5 @@ void print_rev(forward_list<int>& lst, forward_list<int>::iterator& it){
     auto next_it = it;
     next_it++;
     print_rev(lst, next_it);
-    cout << *it << endl;
+    cout<< *it<< endl;
 }
