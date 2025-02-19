@@ -5,7 +5,8 @@
 #include <vector>
 using namespace std;
 
-void print_even(vector<int>& vec, int idx){
+void print_even(vector<int>& vec, int idx)
+{
     if(idx < 0)return;
     if(vec[idx] % 2 == 0){
     cout<<vec[idx] << endl;
