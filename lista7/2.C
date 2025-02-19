@@ -8,7 +8,7 @@
 using namespace std;
 
 list<int> vet_to_list(int* v, int n){
-    list<int>result;
+    list<int> result;
     for(int i = 0; i < n; i ++){
         result.push_back(v[i]);
     }
