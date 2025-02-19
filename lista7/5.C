@@ -3,26 +3,25 @@
 using namespace std;
 
 bool check_brackets(const string &expression) {
-    stack<char> operators;
-    
-    for (const char &token : expression) {
-        if (token == '(' || token == '[' || token == '{') {
+    stack<char>operators;
+
+    for(const char &token : expression){
+        if(token == '(' || token == '[' || token == '{'){
             operators.push(token);
-        } 
-        else if (token == ')' || token == ']' || token == '}') {
+        }else if (token == ')' || token == ']' || token == '}') { 
             if (operators.empty()) {
-                return false; 
-            }
+                return false;  
+
             char top = operators.top();
-            operators.pop();
-            
+            operators.pop(); 
+
             if ((token == ')' && top != '(') ||
                 (token == ']' && top != '[') ||
                 (token == '}' && top != '{')) {
-                return false;
+                return false;  
             }
         }
-    }
-
+    }   
     return operators.empty();
+    }
 }
