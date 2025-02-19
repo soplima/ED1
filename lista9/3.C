@@ -5,8 +5,9 @@
 #include <vector>
 using namespace std;
 
-int min(vector<int>& vec, int n){
-    if(n == 0) return vec[n];
+int min(vector<int>& vec, int n)
+{
+    if(n == 0)return vec[n];
     int menor = min(vec, n -1);
     return (vec[n] < menor)? vec[n] : menor;
 }
