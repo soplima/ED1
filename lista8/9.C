@@ -5,7 +5,8 @@
 #include <stack>
 using namespace std;
 
-void print_stack(stack<int>& stk){
+void print_stack(stack<int>& stk)
+{
     if(stk.empty()) return;
     int top = stk.top();
     stk.pop();
