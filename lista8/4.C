@@ -6,8 +6,9 @@
 using namespace std;
 
 
-void print_vec(vector<int>& vec, int idx){
+void print_vec(vector<int>& vec, int idx)
+{
     if(idx < 0) return;
     cout << vec[idx] << endl;
-    print_vec(vec, idx -1 );
+    print_vec(vec, idx -1);
 }
