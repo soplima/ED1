@@ -1,0 +1,12 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// 1, 2, 3, 5, 10
+
+bool sorted (vector<int>& vec, int i){
+    if(i == vec.size()) return true;
+    if(vec[i] < vec[i - 1]) return false;
+    return sorted(vec, i++);
+}
+

@@ -48,6 +48,8 @@
         "typeinfo": "c",
         "sstream": "c",
         "list": "c",
-        "stack": "c"
+        "stack": "c",
+        "struct1": "cpp",
+        "reverse": "cpp"
     }
 }
