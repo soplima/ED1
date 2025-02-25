@@ -38,8 +38,8 @@ vector<Restock> check_restock(vector<Medicine>& inventory) {
             bool found = false;
 
             for(int j = 0; j <restock.size(); j++){
-                if(restock[i].id == inventory[i].id){
-                    restock[i].quantity += 2 * (inventory[i].min_stock - inventory[i].stock);
+                if(restock[j].id == inventory[i].id){
+                    restock[j].quantity += 2 * (inventory[i].min_stock - inventory[i].stock);
                     found = true;
                 }
             }
